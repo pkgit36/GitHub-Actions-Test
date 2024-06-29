@@ -11,7 +11,8 @@ jobs:
       - name: read file
         run: |
          cat README.md
-         ls -lrt
+         ls -lart
+         pwd
       - name: print-vm-details
         run: |  
            cat /etc/os-release
