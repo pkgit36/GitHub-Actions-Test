@@ -26,6 +26,10 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: testfile
+        - name: git-checkout
+          uses: actions/checkout@v4
+          with: 
+              fetch-depth: 0
         - name: list the files
           run: |
            ls -lart
@@ -43,6 +47,10 @@ jobs:
         with:
           name: testfile
       -  name: print the file
-         run: cat testfile.txt
+         run: |
+           ls -lart 
+           cat testfile.txt
+           pwd
+
 
 
