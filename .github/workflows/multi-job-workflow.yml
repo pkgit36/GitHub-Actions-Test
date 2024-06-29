@@ -12,7 +12,7 @@ jobs:
         run: |
          echo "This is multi-job file" > testfile.txt
       - name: upload-artifacts
-        uses: actions/upload-artifacts@v3
+        uses: actions/upload-artifact@v3
         with:
           name: testfile
           path: testfile.txt
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: download-artifacts
-          uses: actions/download-artifacts@v3
+          uses: actions/download-artifact@v3
           with:
             name: testfile
         - name: list the files
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download-artifacts
-        uses: actions/download-artifacts@v3
+        uses: actions/download-artifact@v3
         with:
           name: testfile
       -  name: print the file
