@@ -11,6 +11,8 @@ jobs:
       - name: Create a test file
         run: |
          echo "This is multi-job file" > testfile.txt
+         pwd
+         ls -lart
       - name: upload-artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -25,7 +27,13 @@ jobs:
           with:
             name: testfile
         - name: list the files
-          run: ls -lart
+          run: |
+           ls -lart
+           pwd
+        - name: create-another-file
+          run: |
+            echo "second test file" > secondfile.txt
+            pwd
   read-job:
     needs: list-job
     runs-on: ubuntu-latest
