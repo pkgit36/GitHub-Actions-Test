@@ -1,4 +1,4 @@
-name: First Workflow
+name: Multi-job-workflow
 on: push
 jobs:
   create-job:
