@@ -1,7 +1,16 @@
+# 1st job(create-job) checkout code, create a file (testfile.txt) and upload the artifact to 2nd second job(list-job),
+#2nd second checkout the code, download the artifact from 1st job , create a new file secondfile.txt and upload the artifact to the 3rd job (read job)
+#3rd job, download the artifact from 2nd job and print the both files created on 1st and 2nd job.
+
+#Note:  If you have multiple jobs which creates artificats at every job and if the next corresponding job needs to read the artificates
+#you need to use both upload and download artifact in previous job. Eg: In below case 1st job creates one file and it is downloaded 
+#on second job and second job creates new file, so, again it was uploaded in 2nd job and downloaded in 3rd job.  
+
+
 name: Multi-job-workflow
 on: push
 jobs:
-  create-job:
+  create-job:                              
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -18,7 +27,7 @@ jobs:
         with:
           name: testfile
           path: testfile.txt
-  list-job:
+  list-job:                              # This job will checkout the code, download the artificat from 1st job(create-job)
     needs: create-job
     runs-on: ubuntu-latest
     steps:
