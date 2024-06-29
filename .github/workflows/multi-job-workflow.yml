@@ -22,6 +22,10 @@ jobs:
     needs: create-job
     runs-on: ubuntu-latest
     steps:
+        - name: checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
         - name: download-artifacts
           uses: actions/download-artifact@v3
           with:
@@ -53,6 +57,3 @@ jobs:
            cat testfile.txt
            cat secondfile.txt
            pwd
-
-
-
