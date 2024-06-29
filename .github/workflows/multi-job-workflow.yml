@@ -27,7 +27,7 @@ jobs:
         with:
           name: testfile
           path: testfile.txt
-  list-job:                              # This job will checkout the code, download the artificat from 1st job(create-job)
+  list-job:                
     needs: create-job
     runs-on: ubuntu-latest
     steps:
