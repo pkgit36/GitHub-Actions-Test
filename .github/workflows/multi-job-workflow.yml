@@ -38,6 +38,11 @@ jobs:
           run: |
             echo "second test file" > secondfile.txt
             pwd
+        - name: upload-list-job-artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: list-job
+            path: .
   read-job:
     needs: list-job
     runs-on: ubuntu-latest
@@ -45,11 +50,12 @@ jobs:
       - name: download-artifacts
         uses: actions/download-artifact@v3
         with:
-          name: testfile
+          name: list-job
       -  name: print the file
          run: |
            ls -lart 
            cat testfile.txt
+           cat secondfile.txt
            pwd
 
 
