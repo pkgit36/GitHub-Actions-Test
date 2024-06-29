@@ -1,0 +1,16 @@
+name: First Workflow
+on: push
+jobs:
+  first-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout
+        with:
+          fetch-depth: 0
+      - name: read file
+        run: cat README.md
+      - name: print-vm-details
+        run: |  
+           cat /etc/os-release
+           uname -r
