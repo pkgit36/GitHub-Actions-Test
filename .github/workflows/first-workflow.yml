@@ -9,7 +9,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: read file
-        run: cat README.md
+        run: |
+         cat README.md
+         ls -lrt
       - name: print-vm-details
         run: |  
            cat /etc/os-release
