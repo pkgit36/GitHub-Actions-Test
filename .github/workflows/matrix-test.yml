@@ -1,0 +1,28 @@
+name: matrix
+on:
+    workflow_dispatch: 
+jobs:
+    deploy:
+        strategy:
+            max-parallel: 1
+            fail-fast: true
+            matrix:
+                os: [ubuntu-latest,rocky-latest,ubuntu-18.05,windows]
+                images: [hello-world,alpine]
+                exclude:
+                    - os: windows
+                      images: alpine
+                include: 
+                    - os: centos
+                      images: busybox
+        runs-on: ${{ matrix.os }}
+        steps:
+            - name: Get the docker-info
+              run: docker info
+            - name: Run the images on ${{ matrix.os }}
+              run: docker run ${{ matrix.images }}
+
+              
+
+
+            
