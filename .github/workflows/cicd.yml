@@ -1,5 +1,5 @@
 #In below workflow registry env is optional, you can directly build image without passing registry name 
-#eg: docker build -t ${{ vars.USERNAME }}/${{ env.image }}:0.1 .
+#eg: docker build -t ${{ vars.USERNAME }}/${{ env.image }}:0.1 .   which translates to docker build -t pavan36/webapp-github-actions .
 
 name: cicd
 on: workflow_dispatch
