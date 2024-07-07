@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
     Image-Build:
         env:
-            registry: hub.docker.com
+            registry: docker.io
             image: webapp-github-actions
         runs-on: ubuntu-latest
         steps:
