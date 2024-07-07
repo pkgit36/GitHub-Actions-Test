@@ -1,3 +1,10 @@
+#A matrix strategy lets you use variables in a single job definition to automatically create multiple job runs 
+#that are based on the combinations of the variables. In below case, helloworld, alpine images should be deploy on all the array
+#of OS , so , instead of creating multiple steps for each task, we used the matrix strategy. This also has exclude and include options
+# for advanced uses. max-parallel indicates the number of jobs should be executed parallely and setting fail-fast to true
+#tells gihub actions to not to consider the whole workflow as failed if single job fails and timeout tells actions to terminates 
+#worflow if it exceeds the specific timeout minutes.  
+
 name: Matrix-test
 on:
     workflow_dispatch: 
@@ -6,7 +13,7 @@ jobs:
         timeout-minutes: 2
         strategy:
             max-parallel: 3
-            fail-fast: true
+            fail-fast: false
             matrix:
                 os: [ubuntu-latest,ubuntu-20.04,windows-latest]
                 images: [hello-world,alpine]
@@ -14,7 +21,7 @@ jobs:
                     - os: windows-latest
                       images: alpine
                 include: 
-                    - os: centos
+                    - os: ubuntu-22.04
                       images: busybox
         runs-on: ${{ matrix.os }}
         steps:
