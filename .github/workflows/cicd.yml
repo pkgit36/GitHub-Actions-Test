@@ -1,0 +1,28 @@
+name: cicd
+on: workflow_dispatch
+jobs:
+    Image-Build:
+        env:
+            registry: hub.docker.com
+            image: webapp-github-actions
+        runs-on: ubuntu-latest
+        steps:
+            - name: docker-login
+              run: |
+               docker login --username=${{ vars.USERNAME }}/${{ secrets.PASSWORD }}
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: Image-Build
+              run: |
+                docker build -t ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:0.1 .
+            - name: Image-List
+              run: |
+               docker images
+            - name: Image-Push
+              run: |
+                docker push ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:0.1 
+            - name: Image-Deploy
+              run: |
+               docker run -d ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:0.1 
