@@ -5,12 +5,13 @@ jobs:
     deploy:
         timeout-minutes: 2
         strategy:
-            max-parallel: 4
+            max-parallel: 3
+            fail-fast: true
             matrix:
                 os: [ubuntu-latest,ubuntu-20.04,windows-latest]
                 images: [hello-world,alpine]
                 exclude:
-                    - os: windows
+                    - os: windows-latest
                       images: alpine
                 include: 
                     - os: centos
