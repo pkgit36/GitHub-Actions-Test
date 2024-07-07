@@ -22,7 +22,7 @@ jobs:
                docker images
             - name: Image-Push
               run: |
-                docker push ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:0.1 
+                docker push ${{ vars.USERNAME }}/${{ env.image }}:0.1 
             - name: Image-Deploy
               run: |
                docker run -d ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:0.1 
