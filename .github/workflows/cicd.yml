@@ -9,7 +9,7 @@ jobs:
         steps:
             - name: docker-login
               run: |
-               docker login --username=${{ vars.USERNAME }}/${{ secrets.PASSWORD }}
+               docker login --username=${{ vars.USERNAME }} --password=${{ secrets.PASSWORD }}
             - name: Checkout
               uses: actions/checkout@v4
               with:
