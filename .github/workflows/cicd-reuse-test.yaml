@@ -13,7 +13,7 @@ env:
 jobs:
     Image-Build:
       uses: ./.github/workflows/reusable-workflow.yml
-      
+      secrets: inherit 
 
     Deploy:
       runs-on: ubuntu-latest
