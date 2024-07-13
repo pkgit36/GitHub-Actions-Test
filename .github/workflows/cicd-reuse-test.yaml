@@ -11,6 +11,9 @@ jobs:
     Image-Build:
       uses: ./.github/workflows/reusable-workflow.yml
       secrets: inherit 
+      with:
+        image: webapp-reuse
+
 
     Deploy:
       runs-on: ubuntu-latest
@@ -25,5 +28,6 @@ jobs:
         - name: Image  and Deploy
           run: |
             docker pull ${{ vars.USERNAME }}/${{ env.image }}:0.1
-            docker run -d ${{ env.image }}
+            docker images
+            docker run -d ${{ vars.USERNAME }}/${{ env.image }}:0.1
 
