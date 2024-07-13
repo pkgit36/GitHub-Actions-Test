@@ -21,7 +21,7 @@ jobs:
                docker login --username=${{ vars.USERNAME }} --password=${{ secrets.PASSWORD }}
             - name: Image-Build
               run: |
-                docker build -t ${{ env.registry }}/${{ vars.USERNAME }}/${{ inputs.image }}:1.0 .
+                docker build -t ${{ vars.USERNAME }}/${{ inputs.image }}:1.0 .
             - name: Image-List
               run: |
                docker images
