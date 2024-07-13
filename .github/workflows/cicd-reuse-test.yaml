@@ -8,7 +8,7 @@ env:
       image: webapp-github-actions
 jobs:
     Image-Build:
-      uses: ./.github/workflows/reusable-workflow.yml
+      uses: .github/workflows/reusable-workflow.yml
 
     Deploy:
       runs-on: ubuntu-latest
