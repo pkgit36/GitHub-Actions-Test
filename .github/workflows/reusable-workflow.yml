@@ -3,7 +3,6 @@ on:
   workflow_call: 
     inputs:
       image:
-        required: true
         default: webapp-github-actions
         type: string
   workflow_dispatch: 
@@ -27,4 +26,4 @@ jobs:
                docker images
             - name: Push the image
               run: |
-               docker push ${{ vars.USERNAME }}/${{ inputs.image }}:1.0 .
+               docker push ${{ vars.USERNAME }}/${{ inputs.image }}:1.0
