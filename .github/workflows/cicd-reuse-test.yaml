@@ -2,13 +2,18 @@
 #eg: docker build -t ${{ vars.USERNAME }}/${{ env.image }}:0.1 .   which translates to docker build -t pavan36/webapp-github-actions .
 
 name: cicd-reuse
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push: 
+    branches: 
+      - main
 env:
       registry: docker.io
       image: webapp-github-actions
 jobs:
     Image-Build:
-      uses: .github/workflows/reusable-workflow.yml
+      uses: ./.github/workflows/reusable-workflow.yml
+      
 
     Deploy:
       runs-on: ubuntu-latest
