@@ -22,8 +22,6 @@ jobs:
             - name: Image-Build
               run: |
                 docker build -t ${{ env.registry }}/${{ vars.USERNAME }}/${{ inputs.image }}:1.0 .
-              env:
-                image: ${{ inputs.reuse-webapp }}
             - name: Image-List
               run: |
                docker images
