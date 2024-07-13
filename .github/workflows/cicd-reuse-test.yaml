@@ -12,7 +12,8 @@ jobs:
       uses: ./.github/workflows/reusable-workflow.yml
       secrets: inherit 
       with:
-        image: webapp-reuse
+        image: reuse-webapp
+          
 
 
     Deploy:

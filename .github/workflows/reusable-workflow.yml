@@ -2,8 +2,9 @@ name: reusable-workflow
 on: 
   workflow_call: 
     inputs:
-      webapp-github-actions:
-        required: true
+      image:
+        required: false
+        default: webapp-github-actions
         type: string
   workflow_dispatch: 
   
@@ -20,7 +21,7 @@ jobs:
                docker login --username=${{ vars.USERNAME }} --password=${{ secrets.PASSWORD }}
             - name: Image-Build
               run: |
-                docker build -t ${{ env.registry }}/${{ vars.USERNAME }}/${{ env.image }}:1.0 .
+                docker build -t ${{ env.registry }}/${{ vars.USERNAME }}/${{ inputs.image }}:1.0 .
               env:
                 image: ${{ inputs.reuse-webapp }}
             - name: Image-List
