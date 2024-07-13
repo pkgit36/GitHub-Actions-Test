@@ -1,5 +1,7 @@
 name: reusable-workflow
-on: workflow_dispatch
+on: 
+  workflow_call: 
+  workflow_dispatch: 
 jobs:
     Image-Build:
         env:
