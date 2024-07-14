@@ -6,4 +6,4 @@ on:
       - main
 jobs:
     Code-check:
-      uses: ./vector-agent-aggregator/.github/workflows/reusable-workflow.yml
+      uses: ./vector-agent-aggregator/.github/workflows/GHA-reuse-code-checkout.yml
