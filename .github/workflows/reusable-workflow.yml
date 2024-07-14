@@ -24,6 +24,3 @@ jobs:
             - name: Image-List
               run: |
                docker images
-            - name: Push the image
-              run: |
-               docker push ${{ vars.USERNAME }}/${{ inputs.image }}:1.0

@@ -1,0 +1,9 @@
+name: GHA-reuse-code-checkout-caller
+on: 
+  workflow_dispatch:
+  push: 
+    branches: 
+      - main
+jobs:
+    Code-check:
+      uses: ./vector-agent-aggregator/.github/workflows/reusable-workflow.yml
